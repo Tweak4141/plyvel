@@ -45,8 +45,8 @@ jobs:
     - name: build_whl
       run: |
         echo "$((gi .).FullName)"
-        $env:LIB="$((gi .).FullName)\build_leveldb\Release;$((gi .).FullName)\build_snappy\Release"
-        $env:INCLUDE="$((gi .).FullName)\leveldb\include;$((gi .).FullName)\snappy"
+        set LIB="$((gi .).FullName)\build_leveldb\Release;$((gi .).FullName)\build_snappy\Release"
+        set INCLUDE="$((gi .).FullName)\leveldb\include;$((gi .).FullName)\snappy"
         cython --cplus --fast-fail --annotate plyvel/_plyvel.pyx
         python setup.py sdist bdist_wheel
     - uses: actions/upload-artifact@v2
